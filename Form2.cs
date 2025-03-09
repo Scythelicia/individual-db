@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Security.Cryptography;
@@ -92,12 +93,17 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Add your functionality here
+            DrinkForm drinkForm = new DrinkForm();
+            drinkForm.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // Add your functionality here
+            FoodForm foodForm = new FoodForm();
+    foodForm.Show();
         }
+
+        
+        
     }
 }

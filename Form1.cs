@@ -10,6 +10,8 @@ namespace WindowsFormsApp1
     {
         private string connectionString = "Server=127.0.0.1;Database=db_project;Uid=root;Pwd=Kenneth1110@;";
 
+        private string generatedOTP;  // This will store the OTP
+        private DateTime otpExpiry;   // This will store the OTP expiration time
         public Form1()
         {
             InitializeComponent();
@@ -157,6 +159,30 @@ namespace WindowsFormsApp1
 
             RegisterUser(username, password);
         }
+        public void BuyFood(string foodName, decimal price, int quantity)
+        {
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    decimal totalPrice = price * quantity;
+                    string query = "INSERT INTO orders (food_name, price, quantity, total_price) VALUES (@foodName, @price, @quantity, @totalPrice)";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@foodName", foodName);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cmd.Parameters.AddWithValue("@totalPrice", totalPrice);
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Order placed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
         private void label1_Click(object sender, EventArgs e) { }
         private void label3_Click(object sender, EventArgs e) { }
@@ -164,5 +190,83 @@ namespace WindowsFormsApp1
         private void textBox4_TextChanged(object sender, EventArgs e) { }
         private void pictureBox1_Click(object sender, EventArgs e) { }
         private void Form1_Load(object sender, EventArgs e) { }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ForgotButton_Click(object sender, EventArgs e)
+        {
+            // Step 1: Ask the user a security question regardless of the answer
+            string questionAnswer = Microsoft.VisualBasic.Interaction.InputBox("What is your favorite color?", "Security Question", "");
+
+            // Step 2: Generate OTP and show it in a MessageBox
+            Random random = new Random();
+            generatedOTP = random.Next(100000, 999999).ToString();
+            otpExpiry = DateTime.Now.AddMinutes(5);
+            MessageBox.Show("Your OTP Code is: " + generatedOTP, "OTP Code", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Step 3: Ask the user to enter the OTP
+            string otpInput = Microsoft.VisualBasic.Interaction.InputBox("Enter the OTP displayed:", "OTP Verification", "");
+
+            // Step 4: Verify if the OTP is correct
+            if (DateTime.Now > otpExpiry)
+            {
+                MessageBox.Show("OTP Expired!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (otpInput == generatedOTP)
+            {
+                MessageBox.Show("OTP Verified! Please enter your new password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Step 5: Ask for new password
+                string newPassword = Microsoft.VisualBasic.Interaction.InputBox("Enter your new password:", "Reset Password", "");
+                string confirmPassword = Microsoft.VisualBasic.Interaction.InputBox("Confirm your new password:", "Confirm Password", "");
+
+                // Step 6: Validate password match
+                if (newPassword != confirmPassword)
+                {
+                    MessageBox.Show("Passwords do not match. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Step 7: Hash the new password
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
+
+                // Step 8: Update the password in the database (only for the user)
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+                        string query = "UPDATE users SET password = @password WHERE username = @username";
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@password", hashedPassword);
+                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+
+                        int result = cmd.ExecuteNonQuery();
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Password updated successfully! Please log in with your new password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to update password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Database Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid OTP. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

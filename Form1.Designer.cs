@@ -29,32 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ForgotButton = new System.Windows.Forms.Button();
+            this.registerButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.registerButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1692, 717);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // txtUsername
             // 
@@ -72,11 +58,11 @@
             this.panel1.AutoSize = true;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ForgotButton);
             this.panel1.Controls.Add(this.registerButton);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -88,6 +74,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(510, 372);
             this.panel1.TabIndex = 4;
+            // 
+            // ForgotButton
+            // 
+            this.ForgotButton.Font = new System.Drawing.Font("Courier New", 9.75F);
+            this.ForgotButton.ForeColor = System.Drawing.Color.Goldenrod;
+            this.ForgotButton.Location = new System.Drawing.Point(328, 242);
+            this.ForgotButton.Name = "ForgotButton";
+            this.ForgotButton.Size = new System.Drawing.Size(147, 31);
+            this.ForgotButton.TabIndex = 5;
+            this.ForgotButton.Text = "FORGOT PASSWORD?";
+            this.ForgotButton.UseVisualStyleBackColor = true;
+            this.ForgotButton.Click += new System.EventHandler(this.ForgotButton_Click);
+            //this.ForgotButton.Paint += new System.Windows.Forms.PaintEventHandler(this.ForgotButton_Paint);
+            // 
+            // registerButton
+            // 
+            this.registerButton.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerButton.ForeColor = System.Drawing.Color.Goldenrod;
+            this.registerButton.Location = new System.Drawing.Point(38, 242);
+            this.registerButton.Name = "registerButton";
+            this.registerButton.Size = new System.Drawing.Size(129, 31);
+            this.registerButton.TabIndex = 8;
+            this.registerButton.Text = "REGISTER NOW";
+            this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // label6
             // 
@@ -126,17 +137,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
-            // 
-            this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Goldenrod;
-            this.label4.Location = new System.Drawing.Point(305, 248);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(170, 22);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "FORGOT PASSWORD?";
-            // 
             // txtPassword
             // 
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -174,30 +174,19 @@
             this.label1.Text = "PAIMON\'S TREATS";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // registerButton
-            // 
-            this.registerButton.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.ForeColor = System.Drawing.Color.Goldenrod;
-            this.registerButton.Location = new System.Drawing.Point(38, 242);
-            this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(129, 31);
-            this.registerButton.TabIndex = 8;
-            this.registerButton.Text = "REGISTER NOW";
-            this.registerButton.UseVisualStyleBackColor = true;
-            this.registerButton.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1692, 717);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1692, 847);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -206,17 +195,16 @@
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button registerButton;
+        private System.Windows.Forms.Button ForgotButton;
     }
 }
 

@@ -44,3 +44,10 @@ D:\BSIT 3\WindowsFormsApp1\bin\Debug\System.Numerics.Vectors.xml
 D:\BSIT 3\WindowsFormsApp1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\BSIT 3\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\BSIT 3\WindowsFormsApp1\obj\Debug\WindowsF.A1EEDF9B.Up2Date
+D:\BSIT 3\WindowsFormsApp1\bin\Debug\Interop.WMPLib.dll
+D:\BSIT 3\WindowsFormsApp1\bin\Debug\AxInterop.WMPLib.dll
+D:\BSIT 3\WindowsFormsApp1\obj\Debug\Interop.WMPLib.dll
+D:\BSIT 3\WindowsFormsApp1\obj\Debug\AxInterop.WMPLib.dll
+D:\BSIT 3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.ResolveComReference.cache
+D:\BSIT 3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FoodForm.resources
+D:\BSIT 3\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.DrinkForm.resources
