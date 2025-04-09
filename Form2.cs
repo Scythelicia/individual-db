@@ -30,10 +30,10 @@ namespace WindowsFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            // Create a new form to display login history
-            Form historyForm = new Form();
-            historyForm.Text = "Login History";
-            historyForm.Size = new Size(600, 400);
+            // Create a new form to display the transaction history
+            Form transactionHistoryForm = new Form();
+            transactionHistoryForm.Text = "Transaction History";
+            transactionHistoryForm.Size = new Size(800, 400);
 
             DataGridView dataGridView = new DataGridView
             {
@@ -41,36 +41,33 @@ namespace WindowsFormsApp1
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
             };
 
-            historyForm.Controls.Add(dataGridView);
+            transactionHistoryForm.Controls.Add(dataGridView);
 
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
-                    string query = "SELECT username, entered_password, timestamp FROM UserHistory ORDER BY timestamp DESC";
+                    string query = "SELECT product_name, price, quantity, total_amount, payment, change_amount, transaction_date " +
+                                   "FROM transactions ORDER BY transaction_date DESC";
+
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
 
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    // Hash entered passwords before displaying
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        row["entered_password"] = HashPassword(row["entered_password"].ToString());
-                    }
-
                     dataGridView.DataSource = dt;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error loading login history: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error loading transaction history: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            historyForm.ShowDialog();
+            transactionHistoryForm.ShowDialog();
         }
+
 
         private string HashPassword(string password)
         {

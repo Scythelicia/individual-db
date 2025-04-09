@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
         }
 
         // Function to insert purchase into the database
+        // Function to insert purchase into the database
         private void SaveToDatabase(string productName, decimal price, int quantity, decimal payment, decimal change)
         {
             string connectionString = "server=127.0.0.1;database=db_project;uid=root;pwd=Kenneth1110@;";
@@ -48,7 +49,7 @@ namespace WindowsFormsApp1
                 try
                 {
                     conn.Open();
-                    string query = "INSERT INTO transactions (product_name, price, quantity, total_amount, payment, change, transaction_date) " +
+                    string query = "INSERT INTO transactions (product_name, price, quantity, total_amount, payment, `change`, transaction_date) " +
                                    "VALUES (@product_name, @price, @quantity, @total_amount, @payment, @change, NOW())";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -68,6 +69,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
 
 
         private void btnBuy1_Click(object sender, EventArgs e)
