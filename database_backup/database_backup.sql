@@ -53,17 +53,23 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `transaction_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `payment` decimal(10,2) DEFAULT NULL,
   `change_amount` decimal(10,2) DEFAULT NULL,
+  `change` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_project.transactions: ~6 rows (approximately)
-INSERT INTO `transactions` (`id`, `product_name`, `price`, `quantity`, `total_amount`, `transaction_date`, `payment`, `change_amount`) VALUES
-	(1, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-03-07 06:17:46', NULL, NULL),
-	(2, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-03-07 06:17:52', NULL, NULL),
-	(3, 'Jade Parcels', 750.00, 1, 750.00, '2025-03-07 06:18:04', NULL, NULL),
-	(4, 'Sweet Madame', 600.00, 1, 600.00, '2025-03-07 06:18:06', NULL, NULL),
-	(5, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-03-07 06:26:12', 3000.00, 2000.00),
-	(6, 'Golden Crab', 900.00, 1, 900.00, '2025-03-07 06:26:23', 2999.00, 2099.00);
+-- Dumping data for table db_project.transactions: ~11 rows (approximately)
+INSERT INTO `transactions` (`id`, `product_name`, `price`, `quantity`, `total_amount`, `transaction_date`, `payment`, `change_amount`, `change`) VALUES
+	(1, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-03-07 06:17:46', NULL, NULL, NULL),
+	(2, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-03-07 06:17:52', NULL, NULL, NULL),
+	(3, 'Jade Parcels', 750.00, 1, 750.00, '2025-03-07 06:18:04', NULL, NULL, NULL),
+	(4, 'Sweet Madame', 600.00, 1, 600.00, '2025-03-07 06:18:06', NULL, NULL, NULL),
+	(5, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-03-07 06:26:12', 3000.00, 2000.00, NULL),
+	(6, 'Golden Crab', 900.00, 1, 900.00, '2025-03-07 06:26:23', 2999.00, 2099.00, NULL),
+	(7, 'Golden Crab', 900.00, 1, 900.00, '2025-04-03 07:44:32', 5000.00, 4100.00, NULL),
+	(8, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-04-09 08:43:48', 3000.00, 2000.00, NULL),
+	(9, 'Adeptus\' Temptation', 1000.00, 1, 1000.00, '2025-04-09 08:55:41', 3000.00, 2000.00, NULL),
+	(10, 'Jade Parcels', 750.00, 1, 750.00, '2025-04-09 08:55:48', 800.00, 50.00, NULL),
+	(11, 'Sparkling Berry Juice', 500.00, 1, 500.00, '2025-04-09 09:11:57', 600.00, NULL, 100.00);
 
 -- Dumping structure for table db_project.userhistory
 CREATE TABLE IF NOT EXISTS `userhistory` (
@@ -73,9 +79,9 @@ CREATE TABLE IF NOT EXISTS `userhistory` (
   `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `entered_password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table db_project.userhistory: ~65 rows (approximately)
+-- Dumping data for table db_project.userhistory: ~78 rows (approximately)
 INSERT INTO `userhistory` (`id`, `username`, `status`, `timestamp`, `entered_password`) VALUES
 	(1, 'kenneth', 'Successful', '2025-02-09 08:08:58', NULL),
 	(2, 'kenneth', 'Successful', '2025-02-09 15:14:27', NULL),
@@ -141,7 +147,20 @@ INSERT INTO `userhistory` (`id`, `username`, `status`, `timestamp`, `entered_pas
 	(62, 'paulsanoria', 'Successful', '2025-03-07 07:09:53', NULL),
 	(63, 'paulsanoria', 'Successful', '2025-03-07 07:13:07', NULL),
 	(64, 'paulsanoria', 'Failed', '2025-03-08 10:24:19', NULL),
-	(65, 'paulsanoria', 'Successful', '2025-03-08 10:37:01', NULL);
+	(65, 'paulsanoria', 'Successful', '2025-03-08 10:37:01', NULL),
+	(66, 'paulsanoria', 'Successful', '2025-03-09 15:53:43', NULL),
+	(67, 'paulsanoria', 'Successful', '2025-03-09 15:54:50', NULL),
+	(68, 'paulsanoria', 'Successful', '2025-03-09 15:55:24', NULL),
+	(69, 'paulsanoria', 'Successful', '2025-04-03 07:43:25', NULL),
+	(70, 'kenneth', 'Failed', '2025-04-09 08:43:01', NULL),
+	(71, 'paulsanoria', 'Successful', '2025-04-09 08:43:16', NULL),
+	(72, 'paulsanoria', 'Successful', '2025-04-09 08:55:35', NULL),
+	(73, 'paulsanoria', 'Failed', '2025-04-09 09:01:03', NULL),
+	(74, 'paulsanoria', 'Successful', '2025-04-09 09:01:07', NULL),
+	(75, 'paulsanoria', 'Successful', '2025-04-09 09:02:18', NULL),
+	(76, 'paulsanoria', 'Successful', '2025-04-09 09:06:37', NULL),
+	(77, 'paulsanoria', 'Successful', '2025-04-09 09:09:17', NULL),
+	(78, 'paulsanoria', 'Successful', '2025-04-09 09:11:52', NULL);
 
 -- Dumping structure for table db_project.users
 CREATE TABLE IF NOT EXISTS `users` (
