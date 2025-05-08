@@ -9,22 +9,20 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private string connectionString = "Server=127.0.0.1;Database=db_project;Uid=root;Pwd=Kenneth1110@;";
+        private string generatedOTP;
+        private DateTime otpExpiry;
 
-        private string generatedOTP;  // This will store the OTP
-        private DateTime otpExpiry;   // This will store the OTP expiration time
         public Form1()
         {
             InitializeComponent();
         }
 
-        // Password Complexity Checker
         private bool IsPasswordComplex(string password)
         {
             var regex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
             return regex.IsMatch(password);
         }
 
-        // Registration Logic
         private void RegisterUser(string username, string password)
         {
             if (!IsPasswordComplex(password))
@@ -58,10 +56,7 @@ namespace WindowsFormsApp1
                     cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                     int result = cmd.ExecuteNonQuery();
-                    if (result > 0)
-                        MessageBox.Show("User Registered Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        MessageBox.Show("Registration Failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(result > 0 ? "User Registered Successfully!" : "Registration Failed.", "Info", MessageBoxButtons.OK, result > 0 ? MessageBoxIcon.Information : MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
@@ -70,15 +65,25 @@ namespace WindowsFormsApp1
             }
         }
 
-        // Login Logic
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = txtUsername.Text;
-            string password = txtPassword.Text;
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please enter both username and password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Admin login (hardcoded)
+            if (username == "admin" && password == "admin")
+            {
+                MessageBox.Show("Admin login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                Form2 dashboard = new Form2("admin");
+                dashboard.Show();
+                LogLoginHistory(username, "Successful (Admin)");
                 return;
             }
 
@@ -159,6 +164,7 @@ namespace WindowsFormsApp1
 
             RegisterUser(username, password);
         }
+
         public void BuyFood(string foodName, decimal price, int quantity)
         {
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -184,33 +190,17 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void label1_Click(object sender, EventArgs e) { }
-        private void label3_Click(object sender, EventArgs e) { }
-        private void textBox2_TextChanged(object sender, EventArgs e) { }
-        private void textBox4_TextChanged(object sender, EventArgs e) { }
-        private void pictureBox1_Click(object sender, EventArgs e) { }
-        private void Form1_Load(object sender, EventArgs e) { }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ForgotButton_Click(object sender, EventArgs e)
         {
-            // Step 1: Ask the user a security question regardless of the answer
             string questionAnswer = Microsoft.VisualBasic.Interaction.InputBox("What is your favorite color?", "Security Question", "");
 
-            // Step 2: Generate OTP and show it in a MessageBox
             Random random = new Random();
             generatedOTP = random.Next(100000, 999999).ToString();
             otpExpiry = DateTime.Now.AddMinutes(5);
             MessageBox.Show("Your OTP Code is: " + generatedOTP, "OTP Code", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Step 3: Ask the user to enter the OTP
             string otpInput = Microsoft.VisualBasic.Interaction.InputBox("Enter the OTP displayed:", "OTP Verification", "");
 
-            // Step 4: Verify if the OTP is correct
             if (DateTime.Now > otpExpiry)
             {
                 MessageBox.Show("OTP Expired!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -221,21 +211,17 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show("OTP Verified! Please enter your new password.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Step 5: Ask for new password
                 string newPassword = Microsoft.VisualBasic.Interaction.InputBox("Enter your new password:", "Reset Password", "");
                 string confirmPassword = Microsoft.VisualBasic.Interaction.InputBox("Confirm your new password:", "Confirm Password", "");
 
-                // Step 6: Validate password match
                 if (newPassword != confirmPassword)
                 {
                     MessageBox.Show("Passwords do not match. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Step 7: Hash the new password
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newPassword);
 
-                // Step 8: Update the password in the database (only for the user)
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     try
@@ -268,5 +254,13 @@ namespace WindowsFormsApp1
             }
         }
 
+        // Unused default event handlers (can be safely deleted if not wired in Designer)
+        private void label1_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void textBox2_TextChanged(object sender, EventArgs e) { }
+        private void textBox4_TextChanged(object sender, EventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void Form1_Load(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
     }
 }

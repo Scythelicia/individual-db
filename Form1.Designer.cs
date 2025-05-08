@@ -86,7 +86,6 @@
             this.ForgotButton.Text = "FORGOT PASSWORD?";
             this.ForgotButton.UseVisualStyleBackColor = true;
             this.ForgotButton.Click += new System.EventHandler(this.ForgotButton_Click);
-            //this.ForgotButton.Paint += new System.Windows.Forms.PaintEventHandler(this.ForgotButton_Paint);
             // 
             // registerButton
             // 
@@ -145,6 +144,7 @@
             this.txtPassword.Location = new System.Drawing.Point(38, 193);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(437, 43);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.TextChanged += new System.EventHandler(this.textBox4_TextChanged);

@@ -1,0 +1,158 @@
+=== TRANSACTION REPORT ===
+Generated On: Thursday, May 8, 2025 9:39 PM
+==========================
+
+Product: Golden Crab
+Price: 900.00
+Quantity: 1
+Total: 900.00
+Payment: 1000.00
+Change: 100.00
+Date: 5/8/2025 9:39:49 PM
+-----------------------------
+Product: Wolfhook Juice
+Price: 450.00
+Quantity: 1
+Total: 450.00
+Payment: 500.00
+Change: 
+Date: 5/8/2025 9:39:39 PM
+-----------------------------
+Product: Jade Parcels
+Price: 750.00
+Quantity: 1
+Total: 750.00
+Payment: 800.00
+Change: 50.00
+Date: 5/8/2025 9:25:35 PM
+-----------------------------
+Product: Berry & Mint Burst
+Price: 350.00
+Quantity: 1
+Total: 350.00
+Payment: 400.00
+Change: 
+Date: 5/8/2025 9:25:19 PM
+-----------------------------
+Product: Sweet Madame
+Price: 600.00
+Quantity: 1
+Total: 600.00
+Payment: 1000.00
+Change: 400.00
+Date: 5/4/2025 5:35:54 PM
+-----------------------------
+Product: Sparkling Berry Juice
+Price: 500.00
+Quantity: 1
+Total: 500.00
+Payment: 600.00
+Change: 
+Date: 5/4/2025 5:35:33 PM
+-----------------------------
+Product: Sweet Madame
+Price: 600.00
+Quantity: 1
+Total: 600.00
+Payment: 700.00
+Change: 100.00
+Date: 4/13/2025 10:22:09 PM
+-----------------------------
+Product: Fruits of the Festival
+Price: 400.00
+Quantity: 1
+Total: 400.00
+Payment: 600.00
+Change: 
+Date: 4/13/2025 10:21:54 PM
+-----------------------------
+Product: Sparkling Berry Juice
+Price: 500.00
+Quantity: 1
+Total: 500.00
+Payment: 600.00
+Change: 
+Date: 4/9/2025 5:11:57 PM
+-----------------------------
+Product: Jade Parcels
+Price: 750.00
+Quantity: 1
+Total: 750.00
+Payment: 800.00
+Change: 50.00
+Date: 4/9/2025 4:55:48 PM
+-----------------------------
+Product: Adeptus' Temptation
+Price: 1000.00
+Quantity: 1
+Total: 1000.00
+Payment: 3000.00
+Change: 2000.00
+Date: 4/9/2025 4:55:41 PM
+-----------------------------
+Product: Adeptus' Temptation
+Price: 1000.00
+Quantity: 1
+Total: 1000.00
+Payment: 3000.00
+Change: 2000.00
+Date: 4/9/2025 4:43:48 PM
+-----------------------------
+Product: Golden Crab
+Price: 900.00
+Quantity: 1
+Total: 900.00
+Payment: 5000.00
+Change: 4100.00
+Date: 4/3/2025 3:44:32 PM
+-----------------------------
+Product: Golden Crab
+Price: 900.00
+Quantity: 1
+Total: 900.00
+Payment: 2999.00
+Change: 2099.00
+Date: 3/7/2025 2:26:23 PM
+-----------------------------
+Product: Adeptus' Temptation
+Price: 1000.00
+Quantity: 1
+Total: 1000.00
+Payment: 3000.00
+Change: 2000.00
+Date: 3/7/2025 2:26:12 PM
+-----------------------------
+Product: Sweet Madame
+Price: 600.00
+Quantity: 1
+Total: 600.00
+Payment: 
+Change: 
+Date: 3/7/2025 2:18:06 PM
+-----------------------------
+Product: Jade Parcels
+Price: 750.00
+Quantity: 1
+Total: 750.00
+Payment: 
+Change: 
+Date: 3/7/2025 2:18:04 PM
+-----------------------------
+Product: Adeptus' Temptation
+Price: 1000.00
+Quantity: 1
+Total: 1000.00
+Payment: 
+Change: 
+Date: 3/7/2025 2:17:52 PM
+-----------------------------
+Product: Adeptus' Temptation
+Price: 1000.00
+Quantity: 1
+Total: 1000.00
+Payment: 
+Change: 
+Date: 3/7/2025 2:17:46 PM
+-----------------------------
+
+=== END OF REPORT ===
